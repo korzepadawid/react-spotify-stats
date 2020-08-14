@@ -19,7 +19,7 @@ export const initialState: State = {
   },
 };
 
-export const reducer = (state: State, action: Action) => {
+export const reducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case AUTH_REQUEST:
       return { ...state, isLoading: true, isError: false };

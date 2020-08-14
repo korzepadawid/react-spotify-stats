@@ -4,7 +4,7 @@ import { State } from '../types';
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state');
-    if (!serializedState) return undefined;
+    if (!serializedState) return initialState;
     const state = JSON.parse(serializedState);
     const currentTimestamp = Date.now();
     const diffrence = currentTimestamp - state.createdAt;
