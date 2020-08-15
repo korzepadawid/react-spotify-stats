@@ -22,6 +22,11 @@ interface Props {
 }
 
 const MainTemplate = ({ children }: Props) => {
+  if (typeof console === 'object') {
+    console.log(
+      `I know you are looking for unwanted console.log's but, you won't find anything here.😁 Anyway have a nice day!👋 Don't forget to visit my portfolio!`,
+    );
+  }
   return (
     <ThemeProvider theme={theme}>
       <>

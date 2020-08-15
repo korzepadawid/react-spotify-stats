@@ -13,6 +13,9 @@ const Wrapper = styled.a`
 
   &:last-child {
     margin-bottom: 100px;
+    @media (min-width: 768px) {
+      margin-bottom: 35px;
+    }
   }
 
   span {
