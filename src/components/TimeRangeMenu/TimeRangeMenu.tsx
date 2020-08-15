@@ -11,6 +11,7 @@ const { Item } = Menu;
 
 const StyledMenu = styled(Menu)`
   background-color: ${({ theme }) => theme.grey.light};
+  z-index: 999 !important;
   top: 0px;
   border: none;
   width: 100%;
