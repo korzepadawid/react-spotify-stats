@@ -1,8 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { Button, Tooltip } from 'antd';
-import { StarOutlined, UserOutlined, ClockCircleOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Button, Tooltip, Popconfirm } from 'antd';
+import {
+  StarOutlined,
+  UserOutlined,
+  ClockCircleOutlined,
+  LogoutOutlined,
+  QuestionCircleOutlined,
+} from '@ant-design/icons';
 import useAuthDispatch from '../../hooks/useAppDispatch';
 import { signOut } from '../../actions';
 
@@ -83,14 +89,13 @@ const Navigation = () => {
             <StyledIconButton shape="circle" icon={<ClockCircleOutlined />} size="large" />
           </Tooltip>
         </StyledNavLink>
-        <Tooltip title="Sign out">
-          <StyledIconButton
-            shape="circle"
-            icon={<LogoutOutlined />}
-            size="large"
-            onClick={handleSignOut}
-          />
-        </Tooltip>
+        <Popconfirm
+          title="Are you sure？"
+          icon={<QuestionCircleOutlined style={{ color: 'red' }} />}
+          onConfirm={handleSignOut}
+        >
+          <StyledIconButton shape="circle" icon={<LogoutOutlined />} size="large" />
+        </Popconfirm>
       </IconContainer>
     </Wrapper>
   );
