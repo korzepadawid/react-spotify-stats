@@ -10,10 +10,16 @@ import { setTimeRange } from '../../actions';
 const { Item } = Menu;
 
 const StyledMenu = styled(Menu)`
-  background-color: transparent;
-  margin-top: 20px;
+  top: 0px;
   border: none;
   width: 100%;
+  height: 50px;
+
+  @media (min-width: 768px) {
+    position: -webkit-sticky;
+    position: sticky;
+    background-color: ${({ theme }) => theme.secondary};
+  }
 `;
 
 const StyledItem = styled(Item)`
