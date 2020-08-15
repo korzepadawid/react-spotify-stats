@@ -1,5 +1,5 @@
-import { initialState } from '../reducer';
-import { State } from '../types';
+import { initialState } from '../context/reducer';
+import { State } from '../context/types';
 
 export const loadState = () => {
   try {

@@ -19,14 +19,14 @@ const StyledSpin = styled(Spin)`
 `;
 
 const List = () => {
-  const { items, isLoading, isError } = useSpotifyData();
+  const { items, status } = useSpotifyData();
   const artists = getPathname() === 'artists';
 
-  if (isLoading) {
+  if (status === 'idle' || status === 'pending') {
     return <StyledSpin />;
   }
 
-  if (isError) {
+  if (status === 'rejected') {
     return <p>Something went wrong...</p>;
   }
 

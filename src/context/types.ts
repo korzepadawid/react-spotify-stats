@@ -16,8 +16,7 @@ export type Dispatch = (action: Action) => void;
 export interface State {
   accessToken: string | '';
   createdAt: number;
-  isLoading: boolean;
-  isError: boolean;
+  status: string;
   timeRange: {
     artists: string;
     tracks: string;

@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
-import { reducer } from '../reducer';
+import { reducer } from '../context/reducer';
 import { StateContext, DispatchContext } from '../context';
 import { loadState, saveState } from '../utils';
 

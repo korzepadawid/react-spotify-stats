@@ -8,7 +8,7 @@ import {
   Dispatch,
   Action,
   SET_TIME_RANGE,
-} from '../types';
+} from './types';
 
 export const signIn = async (dispatch: Dispatch, code: string) => {
   dispatch({ type: AUTH_REQUEST });

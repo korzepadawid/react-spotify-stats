@@ -1,13 +1,54 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
 import Axios, { AxiosRequestConfig } from 'axios';
 import { getPathname } from '../utils';
 import useAppState from './useAppState';
 
+export const ERROR = 'ERROR';
+export const STARTED = 'STARTED';
+export const SUCCESS = 'SUCCESS';
+
+export interface State {
+  items: any[];
+  status: string;
+}
+
+const initialState: State = {
+  items: [],
+  status: 'idle',
+};
+export type Action =
+  | { type: 'ERROR' }
+  | { type: 'STARTED' }
+  | { type: 'SUCCESS'; payload: { items: any[] } };
+
+const reducer = (state = initialState, action: Action) => {
+  switch (action.type) {
+    case ERROR:
+      return {
+        ...state,
+        status: 'rejected',
+      };
+    case STARTED:
+      return {
+        ...state,
+        status: 'pending',
+      };
+
+    case SUCCESS:
+      return {
+        ...state,
+        items: [...action.payload.items],
+        status: 'resolved',
+      };
+
+    default:
+      throw new Error(`Unhandled action type.`);
+  }
+};
+
 const useSpotifyData = () => {
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const key = getPathname();
   const recents = key === 'recents';
@@ -28,21 +69,19 @@ const useSpotifyData = () => {
 
   const fetchData = async () => {
     try {
-      setIsLoading(true);
+      dispatch({ type: STARTED });
       const { data } = await Axios(url, config);
       const resItems = recents ? data.items.map((item: any) => item.track) : data.items;
-      setItems(resItems);
-      setIsLoading(false);
-      setIsError(false);
+      dispatch({ type: SUCCESS, payload: { items: resItems } });
     } catch (error) {
-      setIsError(true);
+      dispatch({ type: ERROR });
     }
   };
 
   useEffect(() => {
     fetchData();
   }, [timeRange, url]);
-  return { items, isLoading, isError };
+  return state;
 };
 
 export default useSpotifyData;

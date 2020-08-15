@@ -5,11 +5,12 @@ import { MenuInfo } from 'rc-menu/lib/interface';
 import { getPathname } from '../../utils';
 import useAppState from '../../hooks/useAppState';
 import useAppDispatch from '../../hooks/useAppDispatch';
-import { setTimeRange } from '../../actions';
+import { setTimeRange } from '../../context/actions';
 
 const { Item } = Menu;
 
 const StyledMenu = styled(Menu)`
+  background-color: ${({ theme }) => theme.grey.light};
   top: 0px;
   border: none;
   width: 100%;

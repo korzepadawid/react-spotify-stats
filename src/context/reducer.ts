@@ -6,12 +6,11 @@ import {
   SIGN_OUT,
   State,
   Action,
-} from '../types';
+} from './types';
 
 export const initialState: State = {
   accessToken: '',
-  isLoading: false,
-  isError: false,
+  status: 'idle',
   createdAt: 0,
   timeRange: {
     artists: 'medium_term',
@@ -22,22 +21,21 @@ export const initialState: State = {
 export const reducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case AUTH_REQUEST:
-      return { ...state, isLoading: true, isError: false };
+      return { ...state, status: 'pending' };
 
     case AUTH_SUCCESS:
       return {
         ...state,
-        isLoading: false,
-        isError: false,
+        status: 'resolved',
         accessToken: action.payload.accessToken,
         createdAt: Date.now(),
       };
 
     case AUTH_FAILURE:
-      return { ...state, isLoading: false, isError: true };
+      return { ...state, status: 'rejected' };
 
     case SIGN_OUT:
-      return { ...initialState };
+      return { ...initialState, status: 'idle' };
 
     case SET_TIME_RANGE:
       return {

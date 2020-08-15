@@ -3,7 +3,7 @@ import { RouteComponentProps, Redirect } from 'react-router-dom';
 import qs from 'query-string';
 import { Button } from 'antd';
 import Heading from '../components/Heading/Heading';
-import { signIn } from '../actions';
+import { signIn } from '../context/actions';
 import useAppState from '../hooks/useAppState';
 import useAppDispatch from '../hooks/useAppDispatch';
 
