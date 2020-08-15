@@ -6,6 +6,7 @@ import { GlobalStyle } from '../theme/GlobalStyle';
 const Container = styled.div`
   width: 88vw;
   margin: 0 6vw;
+  padding-bottom: 65px;
 
   @media (min-width: 768px) {
     width: 60vw;
