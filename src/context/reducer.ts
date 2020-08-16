@@ -10,7 +10,7 @@ import {
 
 export const initialState: State = {
   accessToken: '',
-  status: 'idle',
+  authStatus: 'idle',
   createdAt: 0,
   timeRange: {
     artists: 'medium_term',
@@ -21,21 +21,21 @@ export const initialState: State = {
 export const reducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case AUTH_REQUEST:
-      return { ...state, status: 'pending' };
+      return { ...state, authStatus: 'pending' };
 
     case AUTH_SUCCESS:
       return {
         ...state,
-        status: 'resolved',
+        authStatus: 'resolved',
         accessToken: action.payload.accessToken,
         createdAt: Date.now(),
       };
 
     case AUTH_FAILURE:
-      return { ...state, status: 'rejected' };
+      return { ...state, authStatus: 'rejected' };
 
     case SIGN_OUT:
-      return { ...initialState, status: 'idle' };
+      return { ...initialState, authStatus: 'idle' };
 
     case SET_TIME_RANGE:
       return {

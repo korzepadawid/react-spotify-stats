@@ -8,8 +8,12 @@ interface Props {
 }
 
 const PrivateRoute = ({ component, path }: Props) => {
-  const { accessToken } = useAppState();
-  return accessToken ? <Route path={path} component={component} /> : <Redirect to="/" />;
+  const { accessToken, authStatus } = useAppState();
+  return accessToken && authStatus === 'resolved' ? (
+    <Route path={path} component={component} />
+  ) : (
+    <Redirect to="/" />
+  );
 };
 
 export default PrivateRoute;

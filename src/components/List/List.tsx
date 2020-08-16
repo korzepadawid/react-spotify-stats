@@ -1,22 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Spin } from 'antd';
 import { motion } from 'framer-motion';
 import useSpotifyData from '../../hooks/useSpotifyData';
 import Item from '../Item/Item';
 import { getPathname } from '../../utils';
+import Loader from '../Loader/Loader';
 
 const Wrapper = styled.div`
   margin-top: 30px;
-`;
-
-const StyledSpin = styled(Spin)`
-  width: 100%;
-  margin-top: 80px;
-
-  .ant-spin-dot-item {
-    background-color: ${({ theme }) => theme.grey.main};
-  }
 `;
 
 const motionProps = {
@@ -33,7 +24,7 @@ const List = () => {
   const artists = getPathname() === 'artists';
 
   if (status === 'idle' || status === 'pending') {
-    return <StyledSpin />;
+    return <Loader />;
   }
 
   if (status === 'rejected') {
@@ -42,6 +33,7 @@ const List = () => {
 
   return (
     <Wrapper>
+      {items.length === 0 && status === 'resolved' && <p>There is no data to show...</p>}
       <motion.div {...motionProps}>
         {items.map((item: any, index: number) => (
           <Item
