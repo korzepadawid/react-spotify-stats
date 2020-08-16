@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
+import styled from 'styled-components';
 import { RouteComponentProps, Redirect } from 'react-router-dom';
 import qs from 'query-string';
 import Heading from '../components/Heading/Heading';
 import { signIn } from '../context/actions';
 import useAppState from '../hooks/useAppState';
 import useAppDispatch from '../hooks/useAppDispatch';
-import Loader from '../components/Loader/Loader';
-import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 const Wrapper = styled.div`
   width: 80%;
@@ -18,6 +18,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   overflow: hidden;
   text-align: center;
+
+  @media (min-width: 768px) {
+    width: 60%;
+    margin: 0 20%;
+  }
 `;
 
 const Button = styled.button`
@@ -32,6 +37,15 @@ const Button = styled.button`
     background-color: ${({ theme }) => theme.spotify.dark};
   }
 `;
+
+const motionProps = {
+  initial: { y: 20, opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  transition: {
+    type: 'spring',
+    stiffness: 40,
+  },
+};
 
 interface Props extends RouteComponentProps {}
 
@@ -51,7 +65,7 @@ const Login = ({ location }: Props) => {
   }
 
   if (authStatus === 'pending') {
-    return <Loader />;
+    return <p>Authenticating...</p>;
   }
 
   if (authStatus === 'rejected') {
@@ -60,19 +74,22 @@ const Login = ({ location }: Props) => {
 
   return (
     <Wrapper>
-      <Heading>Statistify</Heading>
-      <p>
-        Have you ever wondered who is your the most listened artists on Spotify?
-        <span role="img" aria-label="happy-emoji">
-          😄
-        </span>
-        It's very safe. Statistify is only using user-read-recently-played and user-top-read scopes.
-      </p>
-      <a
-        href={`https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=code&redirect_uri=${process.env.REACT_APP_SPOTIFY_REDIRECT}&scope=user-read-recently-played%20user-top-read&state=34fFs29kd09`}
-      >
-        <Button>Sign in with Spotify</Button>
-      </a>
+      <motion.div {...motionProps}>
+        <Heading>Statistify</Heading>
+        <p>
+          Have you ever wondered who is your the most listened artists on Spotify?
+          <span role="img" aria-label="happy-emoji">
+            😄
+          </span>
+          It's very safe. Statistify is only using user-read-recently-played and user-top-read
+          scopes.
+        </p>
+        <a
+          href={`https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=code&redirect_uri=${process.env.REACT_APP_SPOTIFY_REDIRECT}&scope=user-read-recently-played%20user-top-read&state=34fFs29kd09`}
+        >
+          <Button>Sign in with Spotify</Button>
+        </a>
+      </motion.div>
     </Wrapper>
   );
 };
