@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useReducer } from 'react';
 import Axios, { AxiosRequestConfig } from 'axios';
-import { getPathname } from '../utils';
 import useAppState from './useAppState';
 
 export const ERROR = 'ERROR';
@@ -47,19 +46,10 @@ const reducer = (state = initialState, action: Action) => {
   }
 };
 
-const useSpotifyData = () => {
+const useSpotifyData = (url: string) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const key = getPathname();
-  const recents = key === 'recents';
-
-  const { accessToken, timeRange } = useAppState();
-  type TimeRangeType = typeof timeRange;
-  const url = recents
-    ? 'https://api.spotify.com/v1/me/player/recently-played?limit=50'
-    : `https://api.spotify.com/v1/me/top/${key}?limit=50&time_range=${
-        timeRange[key as keyof TimeRangeType]
-      }`;
+  const { accessToken } = useAppState();
 
   const config: AxiosRequestConfig = {
     headers: {
@@ -71,7 +61,7 @@ const useSpotifyData = () => {
     try {
       dispatch({ type: STARTED });
       const { data } = await Axios(url, config);
-      const resItems = recents ? data.items.map((item: any) => item.track) : data.items;
+      const resItems = data.items[0].track ? data.items.map((item: any) => item.track) : data.items;
       dispatch({ type: SUCCESS, payload: { items: resItems } });
     } catch (error) {
       dispatch({ type: ERROR });
@@ -80,7 +70,7 @@ const useSpotifyData = () => {
 
   useEffect(() => {
     fetchData();
-  }, [timeRange, url]);
+  }, [url]);
   return state;
 };
 

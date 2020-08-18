@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import useSpotifyData from '../../hooks/useSpotifyData';
 import Item from '../Item/Item';
 import { getPathname } from '../../utils';
 import Loader from '../Loader/Loader';
@@ -19,8 +18,12 @@ const motionProps = {
   },
 };
 
-const List = () => {
-  const { items, status } = useSpotifyData();
+interface Props {
+  items: any[];
+  status: string;
+}
+
+const List = ({ items, status }: Props) => {
   const artists = getPathname() === 'artists';
 
   if (status === 'idle' || status === 'pending') {
