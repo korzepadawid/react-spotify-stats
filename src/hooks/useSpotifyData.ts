@@ -16,10 +16,11 @@ const initialState: State = {
   items: [],
   status: 'idle',
 };
+
 export type Action =
-  | { type: 'ERROR' }
-  | { type: 'STARTED' }
-  | { type: 'SUCCESS'; payload: { items: any[] } };
+  | { type: typeof ERROR }
+  | { type: typeof STARTED }
+  | { type: typeof SUCCESS; payload: { items: any[] } };
 
 const reducer = (state = initialState, action: Action) => {
   switch (action.type) {
