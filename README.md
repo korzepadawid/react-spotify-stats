@@ -1,6 +1,8 @@
 
 # Statistify 🎧
 
+![Statistify dashboard](https://github.com/korzepadawid/Statistify/blob/master/src/assets/statistify_dashboard.png)
+
 **Statistify** is a web-app that provides Spotify users with the possibility to check their most listened artists, tracks on a different time ranges and also to view recently played songs.
 [View live demo 🙈](https://statistify.netlify.app/)
 
@@ -31,7 +33,11 @@ You must create `.env` file inside `Statistify` directory and fill with proper e
     REACT_APP_SPOTIFY_CLIENT_ID = <SPOTIFY_CLIENT_ID>
     REACT_APP_SPOTIFY_CLIENT_SECRET = <SPOTIFY_CLIENT_SECRET>
     REACT_APP_SPOTIFY_REDIRECT = http://localhost:3000/
+    
 You can find all the necessary data on your [Spotify dashboard panel](https://developer.spotify.com/dashboard/)!
+
+![Spotify dashboard](https://github.com/korzepadawid/Statistify/blob/master/src/assets/spotify_dashboard.png)
+
 ```sh
 $ npm run start
 ```
