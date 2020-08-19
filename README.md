@@ -12,6 +12,7 @@ Statistify is a web-app that provides Spotify users with the possibility to chec
 * [axios](https://github.com/axios/axios)
 * [Framer Motion](https://www.framer.com/motion/)
 * [Spotify Web-Api](https://developer.spotify.com/documentation/web-api/)
+* [antd](https://ant.design/)
 
 ## Installation 🛠️
 
