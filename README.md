@@ -18,7 +18,7 @@
 
 ## Installation 🛠️
 
-Statistify requires [Node.js](https://nodejs.org/) v4+ to run.
+Statistify requires [Node.js](https://nodejs.org/) to run.
 
 ```sh
 $ git clone https://github.com/korzepadawid/Statistify.git
