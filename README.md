@@ -1,4 +1,8 @@
 
+![version](https://img.shields.io/badge/version-1.0-green)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/21537f49-99dd-46e1-b3d6-51fb720c9beb/deploy-status)](https://app.netlify.com/sites/statistify/deploys)
+
+
 # Statistify 🎧
 
 ![Statistify dashboard](https://github.com/korzepadawid/Statistify/blob/master/src/assets/statistify_dashboard.png)
@@ -40,6 +44,3 @@ You can find all the necessary data on your [Spotify dashboard panel](https://de
 
 ```sh
 $ npm run start
-```
-![version](https://img.shields.io/badge/version-1.0-green)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/21537f49-99dd-46e1-b3d6-51fb720c9beb/deploy-status)](https://app.netlify.com/sites/statistify/deploys)
