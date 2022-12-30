@@ -7,7 +7,7 @@
 
 ![Statistify dashboard](https://github.com/korzepadawid/Statistify/blob/master/src/assets/statistify_dashboard.png)
 
-**Statistify** is a web-app that provides Spotify users with the possibility to check their most listened artists, tracks on a different time ranges and also to view recently played songs.
+**Statistify** - the application for exploring your favourite artists, songs and recently played tracks on Spotify.
 [View live demo 🙈](https://statistify.netlify.app/)
 
 ## Build with 🧰
@@ -25,22 +25,22 @@
 Statistify requires [Node.js](https://nodejs.org/) to run.
 
 ```sh
-$ git clone https://github.com/korzepadawid/Statistify.git
-$ cd Statistify
-$ npm install
+$ git clone https://github.com/korzepadawid/statistify.git
+$ cd statistify
+$ npm i
 ```
 
-Now you should visit [https://developer.spotify.com/dashboard/](https://developer.spotify.com/dashboard/), sign in and create a new app in your dashboard. You need to edit settings. The most important things are `Redirect URIs`. You need to add `http://localhost:3000/`
-
-You must create `.env` file inside `Statistify` directory and fill with proper environment variables.
-
+Go to [https://developer.spotify.com/dashboard/](https://developer.spotify.com/dashboard/), sign in and create a new app in your dashboard. You need to add a new redirect URI  (`http://localhost:3000/`).
+The `.env` file template.
+    
     REACT_APP_SPOTIFY_CLIENT_ID = <SPOTIFY_CLIENT_ID>
     REACT_APP_SPOTIFY_CLIENT_SECRET = <SPOTIFY_CLIENT_SECRET>
     REACT_APP_SPOTIFY_REDIRECT = http://localhost:3000/
     
-You can find all the necessary data on your [Spotify dashboard panel](https://developer.spotify.com/dashboard/)!
+You can find all the credentials in your [Spotify dashboard panel](https://developer.spotify.com/dashboard/)!
 
 ![Spotify dashboard](https://github.com/korzepadawid/Statistify/blob/master/src/assets/spotify_dashboard.png)
 
 ```sh
 $ npm run start
+```
