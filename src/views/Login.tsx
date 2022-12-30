@@ -77,17 +77,7 @@ const Login = ({ location }: Props) => {
       <motion.div {...motionProps}>
         <Heading>Statistify</Heading>
         <p>
-          Have you ever wondered who is your the most listened artist on Spotify?
-          <span role="img" aria-label="happy-emoji">
-            😄
-          </span>
-          Do you know which song is your favourite? It's easy. Log in with your Spotify account and
-          check!
-          <span role="img" aria-label="fingers-emoji">
-            ✌️
-          </span>
-          Statistify uses user-read-recently-played and user-top-read scopes, so you don't need to
-          worry about your account!
+          Statistify is the application for exploring your favourite artists, songs and recently played tracks on Spotify.
         </p>
         <a
           href={`https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=code&redirect_uri=${process.env.REACT_APP_SPOTIFY_REDIRECT}&scope=user-read-recently-played%20user-top-read&state=34fFs29kd09`}
