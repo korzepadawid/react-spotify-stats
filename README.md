@@ -5,7 +5,7 @@
 
 # Statistify 🎧
 
-![Statistify dashboard](https://github.com/korzepadawid/Statistify/blob/master/src/assets/statistify_dashboard.png)
+![Statistify dashboard](https://github.com/korzepadawid/statistify/blob/master/src/assets/statistify_dashboard.png?raw=true)
 
 **Statistify** - the application for exploring your favourite artists, songs and recently played tracks on Spotify.
 [View live demo 🙈](https://statistify.netlify.app/)
